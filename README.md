@@ -7,5 +7,11 @@ Fall 2021
 * Patient Name
 + First name
 + Last name
-* Date of birth
-* Blood type
+* Patient ID Number
+* Age
+* Tests Results
+
+### Later
+* Date of Birth
+* Blood Type
+* Another item
