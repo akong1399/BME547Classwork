@@ -1,6 +1,36 @@
+class Patient:
+    
+    def __init__(self, input_name, id_no, age):
+        self.name = input_name
+        self.id_no = id_no
+        self.age = age
+        self.tests = []
+        # self._x = 3
+        
+    def __repr__(self):
+        return "{}: {}".format(self.id_no, self.name)
+    
+    def is_adult(self):
+        if self.age >= 21:
+            return True
+        else:
+            return False
+        
+
+# def class_work():
+#     new_patient = Patient("Ann Ables", 120, 36)
+#     print(new_patient.id_no)
+#     print(new_patient.name)
+#     x = Patient("Bob Boyles", 24, 33)
+#     print(x.name)
+#     print(x)
+#     print(x._x)
+    
+
 def create_database_entry(patient_name, id_no, age):
-    new_patient = {"name": patient_name, "id_no": id_no,
-                   "age": age, "tests": []}
+    new_patient = Patient(patient_name, id_no, age)
+    # new_patient = {"name": patient_name, "id_no": id_no,
+    #                "age": age, "tests": []}
     # new_patient = [patient_name, id_no, age, []]
     return new_patient
 
@@ -22,8 +52,8 @@ def print_over_age(db,age):
     for patient in db:
         if patient[2] > age:
             print(patient[0])
-
-
+    
+    
 def get_patient(db, id_no):
     patient = db[id_no]
     return patient
@@ -35,14 +65,14 @@ def get_patient(db, id_no):
 def main():
     db = {}
     x = create_database_entry("Ann Ables", 120, 30)
-    db[x["id_no"]] = x
+    db[x.id_no] = x
     # or db.append(create_database_entry("Ann Ables", 1, 30))
     x = create_database_entry("Bob Boyles", 24, 31)
-    db[x["id_no"]] = x
+    db[x.id_no] = x
     x = create_database_entry("Chris Chou", 33, 33)
-    db[x["id_no"]] = x
+    db[x.id_no] = x
     x = create_database_entry("David Dinkins", 14, 34)
-    db[x["id_no"]] = x
+    db[x.id_no] = x
     print(db)
     
     
@@ -62,9 +92,9 @@ def main():
     test_done = ("HDL", 65)
     
     patient = get_patient(db, patient_id_tested)
-    patient["tests"].append(test_done)
+    patient.tests.append(test_done)
     # patient[3].append(test_done)
-    print(db)
+    print(db[24].tests)
     
     
     print_database(db)
