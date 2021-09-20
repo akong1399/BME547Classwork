@@ -1,9 +1,12 @@
 def create_database_entry(patient_name, id_no, age):
-    new_patient = [patient_name, id_no, age, []]
+    new_patient = {"name": patient_name, "id_no": id_no,
+                   "age": age, "tests": []}
+    # new_patient = [patient_name, id_no, age, []]
     return new_patient
 
+
 def print_database(db):
-    #for i in range(len(db)):
+    # for i in range(len(db)):
         # len --> length of database
         # range returns iterable list from 0 up to, but not including the number
         # print("{} - {}".format(i,db[i]))
@@ -12,17 +15,20 @@ def print_database(db):
     #     print("{} - {} - {}".format(i,patient,locations[i]))
     #     print(patient[0][0]) # getting first letter of each name
     for patient, location in zip(db, locations):
-        print("{} - {}".format(patient,location))
+        print("{} - {}".format(patient, location))
+
 
 def print_over_age(db,age):
     for patient in db:
         if patient[2] > age:
             print(patient[0])
-    
+
+
 def get_patient(db, id_no):
     for patient in db:
-        if patient[1] == id_no:
+        if patient["id_no"] == id_no:
             return patient
+
 
 def main():
     db = []
@@ -35,6 +41,7 @@ def main():
     db.append(x)
     x = create_database_entry("David Dinkins", 14, 34)
     db.append(x)
+    print(db)
     
     # y = db[1] # second entry in the database
     # y = db[len(db)-1] # last entry in the database
@@ -52,16 +59,11 @@ def main():
     test_done = ("HDL", 65)
     
     patient = get_patient(db, patient_id_tested)
-    patient[3].append(test_done)
-    patient[3].append(test_done)
+    patient["tests"].append(test_done)
+    # patient[3].append(test_done)
     
     print_database(db)
-    
-    
+
+
 if __name__ == "__main__":
     main()
-    
-    
-    
-    
-    
