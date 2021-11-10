@@ -30,6 +30,12 @@ def create_output(name, id, blood_letter, rh_factor, center):
 
 def design_window():
 
+    def send_image_to_server_cmd():
+        from send_image_to_server import send_image_to_server
+        filename = file_entry.get()
+        reply = send_image_to_server(filename)
+
+
     def ok_button_cmd():
         # Get needed data from GUI
         name = name_data.get()
